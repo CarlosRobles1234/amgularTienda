@@ -1,0 +1,45 @@
+
+<!--agregar marca trigger-->
+<button type="button" class="btn btn-primary float-end m-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+(click)="modaladdproducto()">
+Agregar producto
+</button>
+
+<table class="table table-striped">
+  <thead>
+    <th>ID</th>
+    <th>NOMBRE DE PRODUCTO</th>
+    <th>DESCRIPCION</th>
+    <th>PRECIO</th>
+    <th>MARCA</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let producto of productoList$|async">
+      <td>{{producto.id_producto}}</td>
+      <td>{{producto.nombre}}</td>
+      <td>{{producto.descripcion}}</td>
+      <td>{{producto.precioVenta}}</td>
+      <td>{{marcaMap.get(producto.id_marca)}}</td>
+
+
+      </tr>
+  </tbody>
+</table>
+
+<!-- Add or edit inspection Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">{{modalproductoTitulo}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+        (click)="modalClose()" id="add-edit-modal-close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <app-agregar-producto [producto]="producto" *ngIf="activateAgregarProducto"></app-agregar-producto>
+      </div>
+    </div>
+  </div>
+</div>
+

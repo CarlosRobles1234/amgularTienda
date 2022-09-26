@@ -1,0 +1,19 @@
+<form>
+
+
+  <div class="mb-3">
+    <label for="nombre" class="form-label">nombre de Marca</label>
+    <input type="text" class="form-control" [(ngModel)]="nombre" name="comments">
+  </div>
+
+
+
+  <button (click)="agregarMarca()" *ngIf="marca.id_marca==0" class="btn btn-primary">
+    Agregar
+  </button>
+  <button (click)="actualizarMarca()" *ngIf="marca.id_marca!=0" class="btn btn-primary">
+    Actualizar
+  </button>
+
+</form>
+

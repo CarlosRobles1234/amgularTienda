@@ -1,0 +1,33 @@
+<form>
+
+
+  <div class="mb-3">
+    <label for="nombre" class="form-label">nombre de Producto</label>
+    <input type="text" class="form-control" [(ngModel)]="nombre" name="comments">
+  </div>
+
+  <div class="mb-3">
+    <label for="descripcion" class="form-label">descripcion</label>
+    <input type="text" class="form-control" [(ngModel)]="descripcion" name="comments">
+  </div>
+
+  <div class="mb-3">
+    <label for="precioVenta" class="form-label">precio de Venta</label>
+    <input type="text" class="form-control" [(ngModel)]="precioVenta" name="comments">
+  </div>
+
+  <div class="mb-3">
+    <label for="id_marca" class="form-label">Marca</label>
+    <input type="text" class="form-control" name="id_marca" [(ngModel)]="id_marca" *ngIf="producto.id_producto!=0" disabled>
+    <select class="form-control" name="id_marca" id="id_marca" [(ngModel)]="id_marca" *ngIf="producto.id_producto==0">
+      <option *ngFor="let type of marcaList$ |async" [value]="type.id_marca">{{type.nombre}}</option>
+    </select>
+  </div>
+
+  <button (click)="agregarProducto()" *ngIf="producto.id_producto==0" class="btn btn-primary">
+    agregar
+  </button>
+  <!--<button (click)="updateInspection()" *ngIf="inspection.id!=0" class="btn btn-primary">
+    Update
+  </button>-->
+</form>
